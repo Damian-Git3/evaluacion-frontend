@@ -1,4 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
+import { UsuariosModule } from '../usuarios/usuarios.module';
 import { InicioComponent } from './inicio.component';
 import { InicioAppComponent } from './inicio/inicio.component';
 
@@ -8,9 +9,14 @@ const routes: Routes = [
         component: InicioComponent,
         children: [
             {
-                path: '',
+                path: 'inicio',
                 title: 'Inicio',
                 component: InicioAppComponent
+            },
+            {
+                path: 'usuarios',
+                title: 'Usuarios',
+                loadChildren: () => UsuariosModule
             },
             {
                 path: '**',

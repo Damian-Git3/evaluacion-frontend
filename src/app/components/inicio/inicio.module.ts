@@ -6,7 +6,7 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenubarModule } from 'primeng/menubar';
 import { Ripple } from 'primeng/ripple';
-import { MenuComponent } from '../menu/menu.component';
+import { MenuComponent } from './menu/menu.component';
 import { InicioComponent } from './inicio.component';
 import { InicioRoutes } from './inicio.routing';
 import { InicioAppComponent } from './inicio/inicio.component';

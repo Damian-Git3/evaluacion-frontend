@@ -1,0 +1,41 @@
+<p-table
+    [value]="[]"
+    [paginator]="true"
+    [rows]="5"
+    [first]="first"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    currentPageReportTemplate="Mostrando {first} de {last} Total: {totalRecords}"
+    [rowsPerPageOptions]="[10, 25, 50]"
+>
+    <ng-template #caption>
+        <div class="flex justify-content-start align-items-center">
+            <h5>Usuarios</h5>
+            <p-button icon="fa-solid fa-plus" label="Nuevo" class="p-button-sm" (click)="(null)"></p-button>
+        </div>
+    </ng-template>
+    <ng-template #header>
+        <tr>
+            <th></th>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>CORREO</th>
+            <th>TIPO</th>
+            <th>ESTATUS</th>
+            <th>CREACION</th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-user>
+        <tr>
+            <td>
+                <p-avatar icon="fa-solid fa-user" shape="circle" size="large" />
+            </td>
+            <td>{{ user.id }}</td>
+            <td>{{ user.nombre }}</td>
+            <td>{{ user.correo }}</td>
+            <td>{{ user.perfil }}</td>
+            <td>{{ user.estatus }}</td>
+            <td>{{ user.fechaCreacion | date: 'dd/MM/yyyy' }}</td>
+        </tr>
+    </ng-template>
+</p-table>

@@ -14,15 +14,18 @@ export class MenuComponent implements OnInit {
         this.items = [
             {
                 label: 'Inicio',
-                icon: 'fa-solid fa-house'
+                icon: 'fa-solid fa-house',
+                routerLink: 'inicio'
             },
             {
                 label: 'Usuarios',
-                icon: 'fa-solid fa-users'
+                icon: 'fa-solid fa-users',
+                routerLink: 'usuarios'
             },
             {
                 label: 'Pedidos',
-                icon: 'fa-solid fa-boxes-stacked'
+                icon: 'fa-solid fa-boxes-stacked',
+                routerLink: 'pedidos'
             }
             /* {
                 label: 'Projects',
