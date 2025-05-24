@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PerfilesService } from '../../../services/perfiles/perfiles.service';
+import { UsuariosService } from '../../../services/usuarios/usuarios.service';
+import { IUsuario } from '../../interfaces/usuario.interface';
 
 @Component({
     selector: 'app-usuarios',
@@ -7,23 +10,49 @@ import { Component, OnInit } from '@angular/core';
     standalone: false
 })
 export class UsuariosComponent implements OnInit {
-    first = 0;
+    public usuarios: IUsuario[] = [];
+    public lsPerfiles: { idPerfil: number; nombrePerfil: string }[] = [];
 
-    rows = 10;
+    constructor(
+        private readonly usuariosService: UsuariosService,
+        private readonly perfilesService: PerfilesService
+    ) {}
 
-    constructor() {}
-
-    ngOnInit() {}
-
-    next() {
-        this.first = this.first + this.rows;
+    ngOnInit() {
+        this.listarPerfiles();
+        this.listarUsuarios();
     }
 
-    prev() {
-        this.first = this.first - this.rows;
+    listarUsuarios() {
+        this.usuariosService.listar().subscribe({
+            next: (response) => {
+                console.log('Usuarios:', response);
+                this.usuarios = response;
+            },
+            error: (error) => {
+                console.error('Error al listar usuarios:', error);
+            }
+        });
     }
 
-    reset() {
-        this.first = 0;
+    listarPerfiles() {
+        this.perfilesService.getPerfiles().subscribe({
+            next: (response) => {
+                console.log('Perfiles:', response);
+                this.lsPerfiles = response;
+            },
+            error: (error) => {
+                console.error('Error al listar perfiles:', error);
+            }
+        });
+    }
+
+    getEstatusLabel(activo: boolean): string {
+        return activo ? 'Activo' : 'Inactivo';
+    }
+
+    getPerfilName(idPerfil: number): string {
+        const perfil = this.lsPerfiles.find((p) => p.idPerfil === idPerfil);
+        return perfil ? perfil.nombrePerfil : 'Desconocido';
     }
 }

@@ -1,4 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
+import { PedidosModule } from '../pedidos/pedidos.module';
 import { UsuariosModule } from '../usuarios/usuarios.module';
 import { InicioComponent } from './inicio.component';
 import { InicioAppComponent } from './inicio/inicio.component';
@@ -17,6 +18,11 @@ const routes: Routes = [
                 path: 'usuarios',
                 title: 'Usuarios',
                 loadChildren: () => UsuariosModule
+            },
+            {
+                path: 'pedidos',
+                title: 'Pedidos',
+                loadChildren: () => PedidosModule
             },
             {
                 path: '**',

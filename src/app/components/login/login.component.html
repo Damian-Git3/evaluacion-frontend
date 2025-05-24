@@ -27,8 +27,10 @@
                             styleClass="w-full"
                             class="w-full"
                             inputStyleClass="w-full"
+                            [feedback]="false"
+                            [toggleMask]="true"
                         >
-                            <ng-template #header>
+                            <!-- <ng-template #header>
                                 <div class="font-semibold text-xm mb-4">Elige una contraseña</div>
                             </ng-template>
                             <ng-template #footer>
@@ -39,7 +41,7 @@
                                     <li>Al menos un número</li>
                                     <li>Mínimo 8 caracteres</li>
                                 </ul>
-                            </ng-template>
+                            </ng-template> -->
                         </p-password>
                         <label for="over_label">Contraseña</label>
                     </p-floatlabel>
@@ -48,7 +50,7 @@
 
             <ng-template #footer>
                 <div class="flex gap-4 mt-1">
-                    <p-button label="Ingresar" class="w-full" styleClass="w-full font-bold" />
+                    <p-button label="Ingresar" class="w-full" styleClass="w-full font-bold" (onClick)="login()" />
                 </div>
             </ng-template>
         </p-card>

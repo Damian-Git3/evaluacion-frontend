@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { InicioModule } from './components/inicio/inicio.module';
-import { LoginModule } from './login/login.module';
+import { LoginModule } from './components/login/login.module';
+import { tokenGuard } from './shared/token.guard';
 
 export const routes: Routes = [
     {
@@ -12,6 +13,7 @@ export const routes: Routes = [
     {
         path: 'app',
         title: 'Inicio',
+        canActivate: [tokenGuard],
         loadChildren: () => InicioModule
     },
 

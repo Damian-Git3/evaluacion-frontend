@@ -9,8 +9,11 @@ import { MenuItem } from 'primeng/api';
 })
 export class MenuComponent implements OnInit {
     items: MenuItem[] | undefined;
+    public nombre: string | null = null;
+    public perfil: string | null = null;
 
     ngOnInit() {
+        this.getUsuario();
         this.items = [
             {
                 label: 'Inicio',
@@ -27,31 +30,17 @@ export class MenuComponent implements OnInit {
                 icon: 'fa-solid fa-boxes-stacked',
                 routerLink: 'pedidos'
             }
-            /* {
-                label: 'Projects',
-                icon: 'pi pi-search',
-                badge: '3',
-                items: [
-                    {
-                        label: 'Core',
-                        icon: 'pi pi-bolt',
-                        shortcut: '⌘+S'
-                    },
-                    {
-                        label: 'Blocks',
-                        icon: 'pi pi-server',
-                        shortcut: '⌘+B'
-                    },
-                    {
-                        separator: true
-                    },
-                    {
-                        label: 'UI Kit',
-                        icon: 'pi pi-pencil',
-                        shortcut: '⌘+U'
-                    }
-                ]
-            } */
         ];
+    }
+
+    getUsuario() {
+        let usuario = localStorage.getItem('usuario');
+        console.log(usuario);
+        if (usuario) {
+            let usuarioJson = JSON.parse(usuario);
+            console.log(usuarioJson);
+            this.nombre = usuarioJson.nombre;
+            this.perfil = usuarioJson.perfil.nombrePerfil;
+        }
     }
 }

@@ -6,7 +6,7 @@
             </svg>
         </ng-template>
         <ng-template #item let-item let-root="root">
-            <a pRipple class="flex items-center p-menubar-item-link" [routerLink]="item.routerLink" >
+            <a pRipple class="flex items-center p-menubar-item-link" [routerLink]="item.routerLink">
                 <i [class]="item.icon"></i>
                 <span>{{ item.label }}</span>
                 <p-badge *ngIf="item.badge" [ngClass]="{ 'ml-auto': !root, 'ml-2': root }" [value]="item.badge" />
@@ -20,8 +20,8 @@
             <div class="flex items-center justify-content-center align-content-center gap-2">
                 <!-- <input type="text" pInputText placeholder="Search" class="w-36" /> -->
                 <div class="flex items-center gap-2 flex-column">
-                    <span> Usuario </span>
-                    <span> Rol </span>
+                    <span> {{ nombre }} </span>
+                    <span> {{ perfil }} </span>
                 </div>
                 <div class="flex items-center justify-content-center align-items-center">
                     <p-avatar icon="fa-solid fa-user" shape="circle" size="large" />
